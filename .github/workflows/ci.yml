@@ -1,12 +1,22 @@
-name: CI
+name: Exemplo de CI # Nome da ação
 
 on:
-  pull_request:
-    branches:
-      - main
-      - develop
-    types: [opened, reopened]
 
-  push:
-    branches:
-      - main
+push: # Evento que irá disparar a ação
+branches: [ main ] # Branch que irá disparar a ação
+
+jobs: # Trabalhos a serem executados
+build: # Nome do trabalho pode ser qualquer um de sua escolha
+runs-on: ubuntu-latest # Sistema operacional a ser utilizado
+steps: # Passos a serem executados
+- name: Checkout code # Nome do passo, nesse caso, clonar o repositório
+uses: actions/checkout@v4 # action escolhida para clonar o repositório
+
+- name: Set up JDK 17 # Nome do passo, nesse caso, configurar o JDK 17
+uses: actions/setup-java@v4 # action escolhida para configurar o JDK
+with: # Configurações da action
+distribution: 'temurin' # Distribuição do JDK
+java-version: '17' # Versão do JDK
+
+- name: Build with Maven # Nome do passo, nesse caso, buildar com Maven
+run: mvn -B package -DskipTests # Comando a ser executado
