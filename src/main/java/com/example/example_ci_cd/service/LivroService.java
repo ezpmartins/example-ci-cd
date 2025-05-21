@@ -29,7 +29,6 @@ public class LivroService {
     }
 
     public Livro salvar(Livro livro) {
-        // Busca o autor pelo id e seta no livro para salvar
         Autor autor = autorService.buscarPorId(livro.getAutor().getId());
         livro.setAutor(autor);
 
@@ -41,7 +40,6 @@ public class LivroService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado");
         }
 
-        // Busca o autor pelo id e seta no livro para atualização
         Autor autor = autorService.buscarPorId(livroAtualizacao.getAutor().getId());
         livroAtualizacao.setAutor(autor);
 
