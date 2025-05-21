@@ -1,0 +1,22 @@
+name: "Exemplo de CD"
+
+on:
+  push: # Evento que dispara o workflow
+    branches:
+      - main # Branch alvo para deploy
+
+jobs:
+  deploy:
+    runs-on: self-hosted # Executado em um agente próprio, como uma máquina EC2
+    steps:
+      - name: Pull Docker image # Puxa a imagem do Docker Hub
+        run: docker pull ezpmartins/ci-example:latest
+
+      - name: Stop Docker container # Para o container, caso ele esteja rodando
+        run: docker stop ci-example || true
+
+      - name: Remove Docker container # Remove o container, caso ele exista
+        run: docker rm ci-example || true
+
+      - name: Run Docker container # Roda o container
+        run: docker run --name ci-example -d -p 8080:8080 ezpmartins/ci-example:latest
