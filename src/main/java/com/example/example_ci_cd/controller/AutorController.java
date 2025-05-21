@@ -44,5 +44,5 @@ public class AutorController {
         Autor autor = autorService.buscarPorId(id);
         return ResponseEntity.status(200).body(autor);
     }
-    
+
 }
