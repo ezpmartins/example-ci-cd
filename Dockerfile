@@ -1,4 +1,4 @@
-FROM maven: 3-openjdk-17 as builder
+FROM maven:3-openjdk-17 AS builder
 LABEL authors="ezpmartins"
 
 WORKDIR /build
@@ -11,6 +11,6 @@ FROM openjdk:17-slim
 
 WORKDIR /app
 
-COPY -- from=builder /build/target/ *. jar /app/app.jar
+COPY --from=builder /build/target/*.jar /app/app.jar
 
-CMD ["java", "-jar", "app. jar"]
+CMD ["java", "-jar", "/app/app.jar"]
