@@ -23,7 +23,6 @@ Este é um projeto de exemplo que implementa uma aplicação Java utilizando **S
 - **Java 17**
 - **Spring Boot 3.1.x**
 - **Spring Data JPA**
-- **PostgreSQL**
 - **Lombok**
 - **Mockito** (para testes unitários)
 - **Maven** (gestão de dependências)
@@ -37,6 +36,5 @@ Este é um projeto de exemplo que implementa uma aplicação Java utilizando **S
 ### Pré-requisitos
 
 - **Java 17+**
-- **PostgreSQL** (ou banco de dados configurado)
 - **Maven** instalado
 - **Docker** (opcional)
